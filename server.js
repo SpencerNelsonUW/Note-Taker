@@ -20,16 +20,16 @@ app.use(express.json());
 // GET route for homepage, this should open initially
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
-);
+)
 //GET route for notes
 app.get('/', (req, res) =>
   res.render(path.join(__dirname, '/public/notes.html'))
-);
+)
 
 //
 app.route('/api/notes').get(function(req, res){
   res.json(database);
-});
+})
 
 app.route("/api/notes").post(function(req, res){
   let jsonFile = path.join(__dirname, '/db/db.json');
@@ -41,7 +41,7 @@ app.route("/api/notes").post(function(req, res){
     }
     console.log("note saved succesfully")
   })
-  res.json(newNote);
+  res.json(newNote)
 })
 
 
