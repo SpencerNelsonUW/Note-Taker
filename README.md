@@ -21,7 +21,7 @@ clone the repo and open it in VS Code.
 The app is deployed at this URL - https://fierce-plains-27227.herokuapp.com/
 
 ## Image
-![image](https://user-images.githubusercontent.com/107777027/191364023-2b4630e1-a034-4e5e-a926-0ec51f7d0f5c.png)
+![image](https://user-images.githubusercontent.com/107777027/191367543-1e03cfe7-90bb-4780-b9ac-67d780d9895e.png)
 
 ## License
 Creative Commons Zero v1.0
