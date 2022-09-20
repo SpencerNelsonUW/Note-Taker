@@ -22,6 +22,7 @@ The app is deployed at this URL - https://fierce-plains-27227.herokuapp.com/
 
 ## Image
 ![image](https://user-images.githubusercontent.com/107777027/191367633-ac3141b9-bb34-4216-9761-db35df314d1f.png)
+![image](https://user-images.githubusercontent.com/107777027/191367815-54254c8e-30a6-47e5-b2cd-d835826ffeab.png)
 
 ## License
 Creative Commons Zero v1.0
