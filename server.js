@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require("path");
 const express = require('express');
 
+const {v4 : uuidv4} = require('uuid')
+
 const database = require('./db/db.json');
 
 //setting up express app
@@ -27,13 +29,11 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 )
 
-
 //GET route for database
-//route to read the `db.json` file and return all saved notes as JSON.
+
 app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/db/db.json'));
 });
-
 
 
 //GET NOTES
@@ -45,6 +45,7 @@ app.route('/api/notes').get(function(req, res){
 app.route("/api/notes").post(function(req, res){
   let jsonFile = path.join(__dirname, '/db/db.json');
   let newNote = req.body;
+  newNote.id = uuidv4();
   database.push(newNote)
   fs.writeFile(jsonFile, JSON.stringify(database), function (err) {
     if (err){
@@ -55,6 +56,27 @@ app.route("/api/notes").post(function(req, res){
   res.json(newNote)
 })
 
+app.delete("/api/notes/:id", function (req, res) {
+  let jsonFile = path.join(__dirname, "/db/db.json");
+  
+  for (let i = 0; i < database.length; i++) {
+
+      if (database[i].id == req.params.id) {
+          database.splice(i, 1);
+          break;
+      }
+  }
+
+  fs.writeFileSync(jsonFile, JSON.stringify(database), function (err) {
+
+    if (err) {
+        return console.log(err);
+    } else {
+        console.log("Your note was deleted!");
+    }
+});
+res.json(database);
+});
 
 //listening to set up the server.
 app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
